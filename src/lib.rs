@@ -24,7 +24,7 @@ pub struct Srs<M: MultiMillerLoop> {
     pub g: Vec<M::G1Affine>,
     pub g_lagrange: Vec<M::G1Affine>,
     pub g2: M::G2Affine,
-    pub s_g2: M::G2Affine,
+    pub s_g2: Vec<M::G2Affine>,
 }
 
 impl<M: MultiMillerLoop> PartialEq for Srs<M> {
@@ -70,17 +70,18 @@ where
                 let g = perpetual_powers_of_tau::read_g1s::<M, _, false>(reader, n);
                 let g_lagrange = g_to_lagrange(&g, desired_k);
 
-                let [g2, s_g2]: [_; 2] =
-                    perpetual_powers_of_tau::read_g2s::<M, _, false>(reader, k, 2)
-                        .try_into()
-                        .unwrap();
+
+                let mut s_g2s = Vec::new();
+                perpetual_powers_of_tau::read_g2s::<M, _, false>(reader, k, desired_k as usize + 1usize)
+                    .into_iter()
+                    .for_each(|s_g2| s_g2s.push(s_g2));
 
                 Self {
                     k: desired_k,
                     g,
                     g_lagrange,
-                    g2,
-                    s_g2,
+                    g2: s_g2s[0],
+                    s_g2: s_g2s[1..].to_vec(),
                 }
             }
             SrsFormat::SnarkJs => {
@@ -92,16 +93,18 @@ where
                 let g = snarkjs::read_g1s::<M, _, false>(reader, n);
                 let g_lagrange = g_to_lagrange(&g, desired_k);
 
-                let [g2, s_g2]: [_; 2] = snarkjs::read_g2s::<M, _, false>(reader, 2)
-                    .try_into()
-                    .unwrap();
-
+                // Read multiple s_g2s as many `desired_k` times
+                let mut s_g2s = Vec::new();
+                snarkjs::read_g2s::<M, _, false>(reader, desired_k as usize + 1usize)
+                    .into_iter()
+                    .for_each(|s_g2| s_g2s.push(s_g2));
+                
                 Self {
                     k: desired_k,
                     g,
                     g_lagrange,
-                    g2,
-                    s_g2,
+                    g2: s_g2s[0],
+                    s_g2: s_g2s[1..].to_vec(),
                 }
             }
         };
@@ -127,16 +130,18 @@ where
             g_to_lagrange(&g, desired_k)
         };
 
-        let [g2, s_g2]: [_; 2] = pse::read_g2s::<M, _, RAW, false>(reader, 2)
-            .try_into()
-            .unwrap();
+        // Read multiple s_g2s as many `desired_k` times
+        let mut s_g2s = Vec::new();
+        pse::read_g2s::<M, _, RAW, false>(reader, desired_k as usize + 1usize)
+            .into_iter()
+            .for_each(|s_g2| s_g2s.push(s_g2));
 
         Self {
             k: desired_k,
             g,
             g_lagrange,
-            g2,
-            s_g2,
+            g2: s_g2s[0],
+            s_g2: s_g2s[1..].to_vec(),
         }
     }
 
@@ -149,7 +154,9 @@ where
             writer.write_all(point.to_bytes().as_ref()).unwrap();
         }
         writer.write_all(self.g2.to_bytes().as_ref()).unwrap();
-        writer.write_all(self.s_g2.to_bytes().as_ref()).unwrap();
+        for point in self.s_g2.iter() {
+            writer.write_all(point.to_bytes().as_ref()).unwrap();
+        }
     }
 
     pub fn write_raw(&self, writer: &mut impl io::Write) {
@@ -161,7 +168,9 @@ where
             point.write_raw(writer).unwrap();
         }
         self.g2.write_raw(writer).unwrap();
-        self.s_g2.write_raw(writer).unwrap();
+        for point in self.s_g2.iter() {
+            point.write_raw(writer).unwrap();
+        }
     }
 
     pub fn downsize(&mut self, k: u32) {
@@ -179,7 +188,7 @@ where
     }
 
     fn validate(&self) -> bool {
-        same_ratio::<M>(&self.g, self.g2, self.s_g2)
+        same_ratio::<M>(&self.g, self.g2, self.s_g2[0])
     }
 }
 

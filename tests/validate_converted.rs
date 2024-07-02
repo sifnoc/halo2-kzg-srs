@@ -60,9 +60,22 @@ async fn fetch_hermez_g2s() -> [G2Affine; 2] {
 
 async fn fetch_perpetual_powers_of_tau_g2() -> [G2Affine; 2] {
     const K: u32 = 28;
-    let uri = "https://ppot.blob.core.windows.net/public/response_0071_edward";
+    let filename = "response_0085_zircuit";
+    let uri = "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/{filename}";
+
+    // If file exists, read it from the local file system
+    let data = if file_exists {
+        let mut file = fs::File::open(&path).await?;
+        let mut buffer = Vec::new();
+        file.read_to_end(&mut buffer).await?;
+        buffer
+    } else {
+        // If file does not exist, fetch from URI
+        fetch(uri, g2_offset, 2 * ec_point_repr_size::<G2Affine>()).await?
+    };
+
     let g2_offset = perpetual_powers_of_tau::g2_offset::<Bn256>(K) as usize;
-    let mut reader = Cursor::new(fetch(uri, g2_offset, 2 * ec_point_repr_size::<G2Affine>()).await);
+    let mut reader = Cursor::new(data);
     perpetual_powers_of_tau::read_g2s::<Bn256, _, true>(&mut reader, K, 2)
         .try_into()
         .unwrap()
