@@ -13,34 +13,35 @@ Since the conversion of large SRS takes much time to run, here are the converted
 
 Note that `pse/halo2` has been updated to read/write in raw format by default since [PR#111](https://github.com/privacy-scaling-explorations/halo2/pull/111).
 
-| Curve   | Source  | K    | File in raw format                |
-| ------- | ------- | ---- | --------------------------------- |
-| `bn254` | `hermez`| `1`  | hermez-raw-1-extended             |
-| `bn254` | `hermez`| `2`  | hermez-raw-2-extended             |
-| `bn254` | `hermez`| `3`  | hermez-raw-3-extended             |
-| `bn254` | `hermez`| `4`  | hermez-raw-4-extended             |
-| `bn254` | `hermez`| `5`  | hermez-raw-5-extended             |
-| `bn254` | `hermez`| `6`  | hermez-raw-6-extended             |
-| `bn254` | `hermez`| `7`  | hermez-raw-7-extended             |
-| `bn254` | `hermez`| `8`  | hermez-raw-8-extended             |
-| `bn254` | `hermez`| `9`  | hermez-raw-9-extended             |
-| `bn254` | `hermez`| `10` | hermez-raw-10-extended            |
-| `bn254` | `hermez`| `11` | hermez-raw-11-extended            |
-| `bn254` | `hermez`| `12` | hermez-raw-12-extended            |
-| `bn254` | `hermez`| `13` | hermez-raw-13-extended            |
-| `bn254` | `hermez`| `14` | hermez-raw-14-extended            |
-| `bn254` | `hermez`| `15` | hermez-raw-15-extended            |
-| `bn254` | `hermez`| `16` | hermez-raw-16-extended            |
-| `bn254` | `hermez`| `17` | hermez-raw-17-extended            |
-| `bn254` | `hermez`| `18` | hermez-raw-18-extended            |
-| `bn254` | `hermez`| `19` | hermez-raw-19-extended            |
-| `bn254` | `hermez`| `20` | hermez-raw-20-extended            |
-| `bn254` | `hermez`| `21` | hermez-raw-21-extended            |
-| `bn254` | `hermez`| `22` | hermez-raw-22-extended            |
-| `bn254` | `hermez`| `23` | hermez-raw-23-extended            |
-| `bn254` | `hermez`| `24` | hermez-raw-24-extended            |
-| `bn254` | `hermez`| `25` | hermez-raw-25-extended            |
-| `bn254` | `hermez`| `26` |                                   |
+| Curve   | Source  | K    | File in raw format                                                                                                   |
+| ------- | ------- | ---- | -------------------------------------------------------------------------------------------------------------------- |
+| `bn254` | `hermez`| `1`  | [hermez-raw-extended-1](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-1)             |
+| `bn254` | `hermez`| `2`  | [hermez-raw-extended-2](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-2)             |
+| `bn254` | `hermez`| `3`  | [hermez-raw-extended-3](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-3)             |
+| `bn254` | `hermez`| `4`  | [hermez-raw-extended-4](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-4)             |
+| `bn254` | `hermez`| `5`  | [hermez-raw-extended-5](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-5)             |
+| `bn254` | `hermez`| `6`  | [hermez-raw-extended-6](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-6)             |
+| `bn254` | `hermez`| `7`  | [hermez-raw-extended-7](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-7)             |
+| `bn254` | `hermez`| `8`  | [hermez-raw-extended-8](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-8)             |
+| `bn254` | `hermez`| `9`  | [hermez-raw-extended-9](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-9)             |
+| `bn254` | `hermez`| `10` | [hermez-raw-extended-10](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-10)           |
+| `bn254` | `hermez`| `11` | [hermez-raw-extended-11](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-11)           |
+| `bn254` | `hermez`| `12` | [hermez-raw-extended-12](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-12)           |
+| `bn254` | `hermez`| `13` | [hermez-raw-extended-13](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-13)           |
+| `bn254` | `hermez`| `14` | [hermez-raw-extended-14](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-14)           |
+| `bn254` | `hermez`| `15` | [hermez-raw-extended-15](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-15)           |
+| `bn254` | `hermez`| `16` | [hermez-raw-extended-16](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-16)           |
+| `bn254` | `hermez`| `17` | [hermez-raw-extended-17](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-17)           |
+| `bn254` | `hermez`| `18` | [hermez-raw-extended-18](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-18)           |
+| `bn254` | `hermez`| `19` | [hermez-raw-extended-19](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-19)           |
+| `bn254` | `hermez`| `20` | [hermez-raw-extended-20](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-20)           |
+| `bn254` | `hermez`| `21` | [hermez-raw-extended-21](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-21)           |
+| `bn254` | `hermez`| `22` | [hermez-raw-extended-22](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-22)           |
+| `bn254` | `hermez`| `23` | [hermez-raw-extended-23](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-23)           |
+| `bn254` | `hermez`| `24` | [hermez-raw-extended-24](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-24)           |
+| `bn254` | `hermez`| `25` | [hermez-raw-extended-25](https://summa-solvency.s3.eu-central-1.amazonaws.com/trusted-setup-hyperplonk2kzg/hermez-raw-extended-25)           |
+| `bn254` | `hermez`| `26` |                                                                                                                      |
+| `bn254` | `hermez`| `27` |                                                                                                                      |
 
 ## Manually convert from the source
 
