@@ -185,6 +185,7 @@ where
         self.k = k;
         self.g.truncate(n as usize);
         self.g_lagrange = g_to_lagrange(&self.g, k);
+        self.s_g2 = self.s_g2[0..k as usize].to_vec();
     }
 
     fn validate(&self) -> bool {
